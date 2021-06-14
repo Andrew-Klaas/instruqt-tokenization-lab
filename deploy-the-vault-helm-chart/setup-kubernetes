@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #fix path
-echo "export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" >> ~/.bashrc
-export "VAULT_ADDR=http://127.0.0.1:8200" >> ~/.bashrc
+echo "export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" >> /root/.bashrc
+echo "VAULT_ADDR=http://127.0.0.1:8200" >> /root/.bashrc
 echo "alias k='kubectl'" >> ~/.bashrc
 #k8s setup
 echo "Setting up K8s..."
