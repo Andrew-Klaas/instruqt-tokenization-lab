@@ -107,3 +107,5 @@ export K8S_HOST="https://kubernetes.default.svc:443"
 
 
 /usr/bin/kubectl apply -f /root/vault_go_demo
+
+sleep 20s
