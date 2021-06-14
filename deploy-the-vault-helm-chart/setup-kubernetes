@@ -56,7 +56,7 @@ EOF
 /usr/bin/vault policy write transform-app-example transform-app-example.policy
 
 /usr/bin/kubectl create serviceaccount vault-auth
-/usr/bin/kubectl apply --filename vault-auth-service-account.yaml
+/usr/bin/kubectl apply --filename /root/config/vault-auth-service-account.yaml
 
 export VAULT_SA_NAME=$(/usr/bin/kubectl get sa vault-auth -o jsonpath="{.secrets[*]['name']}" | awk '{ print $1 }')
 export SA_JWT_TOKEN=$(/usr/bin/kubectl get secret $VAULT_SA_NAME -o jsonpath="{.data.token}" | base64 --decode; echo)
