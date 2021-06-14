@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#fix path
+echo "export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" >> ~/.bashrc
+#k8s setup
+echo "Setting up K8s..."
+until [ -f /opt/instruqt/bootstrap/host-bootstrap-completed ]
+do
+    sleep 1
+done
+echo "source /usr/share/bash-completion/bash_completion" >> /root/.bashrc
+echo "complete -F __start_kubectl k" >> /root/.bashrc
+/usr/bin/start.sh
+echo "K8s setup complete"
+
+
+curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+add-apt-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+apt update -y
+apt install -y kubectl consul vault
+
+git clone https://github.com/Andrew-Klaas/instruqt-tokenization-lab.git 
+cp -r instruqt-tokenization-lab /root
+
+
+

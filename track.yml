@@ -1,0 +1,44 @@
+slug: vault-advanced-data-protection-with-tokenization
+id: pm1e6okdgbx3
+version: 0.0.1
+type: track
+title: 'WIP: Vault ADP with Tokenization'
+teaser: Leverage Vault's Transform Secret Engine (Tokenization) for protecting customer
+  PII data.
+description: Leverage Vault's Transform (Tokenization) Secret Engine to protect customer
+  PII data.
+icon: ""
+tags:
+- ""
+owner: hashicorp
+developers:
+- aklaas@hashicorp.com
+private: true
+published: false
+challenges:
+- slug: deploy-the-vault-helm-chart
+  id: lz6iiyy29zf0
+  type: challenge
+  title: Deploy The Vault Helm Chart
+  teaser: In this first challenge, we will deploy Vault via the official Helm chart.
+  notes:
+  - type: text
+    contents: Deploy Vault via Helm Chart
+  assignment: First install the Helm chart.
+  tabs:
+  - title: Terminal
+    type: terminal
+    hostname: kubernetes
+  - title: Vault-go-demo
+    type: service
+    hostname: kubernetes
+    path: /
+    port: 9090
+  - title: Vault-ui
+    type: service
+    hostname: kubernetes
+    path: /
+    port: 8200
+  difficulty: basic
+  timelimit: 10000
+checksum: "2497413830804128353"
