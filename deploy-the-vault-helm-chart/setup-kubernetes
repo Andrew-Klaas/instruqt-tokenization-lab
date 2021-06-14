@@ -26,7 +26,8 @@ apt install -y vault
 
 git clone https://github.com/Andrew-Klaas/instruqt-tokenization-lab.git 
 cp -r instruqt-tokenization-lab /root
- cp -r /root/instruqt-tokenization-lab/assets/helm /root/
+cp -r /root/instruqt-tokenization-lab/assets/helm /root/
+cp -r /root/instruqt-tokenization-lab/assets/config /root/
 
 /usr/local/bin/helm repo add stable https://charts.helm.sh/stable
 /usr/local/bin/helm repo add hashicorp https://helm.releases.hashicorp.com
@@ -51,5 +52,54 @@ path "transform/*" {
     capabilities = ["read", "list", "create", "update", "delete"]
 }
 EOF
-vault policy write transform-app-example transform-app-example.policy
+/usr/bin/vault policy write transform-app-example transform-app-example.policy
 
+/usr/bin/kubectl create serviceaccount vault-auth
+/usr/bin/kubectl apply --filename vault-auth-service-account.yaml
+
+export VAULT_SA_NAME=$(kubectl get sa vault-auth -o jsonpath="{.secrets[*]['name']}" | awk '{ print $1 }')
+export SA_JWT_TOKEN=$(kubectl get secret $VAULT_SA_NAME -o jsonpath="{.data.token}" | base64 --decode; echo)
+export SA_CA_CRT=$(kubectl get secret $VAULT_SA_NAME -o jsonpath="{.data['ca\.crt']}" | base64 --decode; echo)
+
+export VAULT_ADDR=http://127.0.0.1:8200
+export K8S_HOST="https://kubernetes.default.svc:443"
+/usr/bin/vault auth enable kubernetes
+
+/usr/bin/vault write auth/kubernetes/config \
+        token_reviewer_jwt="$SA_JWT_TOKEN" \
+        kubernetes_host="$K8S_HOST" \
+        kubernetes_ca_cert="$SA_CA_CRT"
+
+/usr/bin/vault write auth/kubernetes/role/example \
+        bound_service_account_names=vault-auth \
+        bound_service_account_namespaces=default \
+        policies=transform-app-example \
+        ttl=72h
+
+/usr/bin/vault write auth/kubernetes/role/vault_go_demo \
+        bound_service_account_names=vault-auth \
+        bound_service_account_namespaces=default \
+        policies=transform-app-example \
+        ttl=72h
+
+/usr/bin/vault secrets enable database
+
+/usr/bin/vault write database/config/my-postgresql-database \
+    plugin_name=postgresql-database-plugin \
+    allowed_roles="my-role, vault_go_demo" \
+    connection_url="postgresql://{{username}}:{{password}}@pq-postgresql-headless.default.svc:5432/vault_go_demo?sslmode=disable" \
+    username="postgres" \
+    password="password"
+
+/usr/bin/vault write database/roles/vault_go_demo \
+    db_name=my-postgresql-database \
+    creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; \
+    ALTER USER \"{{name}}\" WITH SUPERUSER;" \
+    default_ttl="1h" \
+    max_ttl="24h"
+
+/usr/bin/vault secrets enable transform
+/usr/bin/vault write transform/role/vault_go_demo transformations=ssn
+/usr/bin/vault write transform/transformations/tokenization/ssn \
+    allowed_roles=vault_go_demo \
+    max_ttl=24h
