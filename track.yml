@@ -3,19 +3,18 @@ id: pm1e6okdgbx3
 version: 0.0.1
 type: track
 title: 'WIP: Vault ADP with Tokenization'
-icon: https://storage.googleapis.com/instruqt-frontend/assets/hashicorp/tracks/vault.png
 teaser: Leverage Vault's Transform Secret Engine (Tokenization) for protecting customer
   PII data.
 description: Leverage Vault's Transform (Tokenization) Secret Engine to protect customer
   PII data.
-icon: ""
+icon: https://storage.googleapis.com/instruqt-frontend/assets/hashicorp/tracks/vault.png
 tags:
 - ""
 owner: hashicorp
 developers:
 - aklaas@hashicorp.com
 private: true
-published: false
+published: true
 challenges:
 - slug: deploy-the-vault-helm-chart
   id: lz6iiyy29zf0
@@ -42,4 +41,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "18345524288736585037"
+checksum: "8237422963013627626"
