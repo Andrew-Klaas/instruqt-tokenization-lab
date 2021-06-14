@@ -2,7 +2,6 @@
 
 #fix path
 echo "export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" >> /root/.bashrc
-echo "VAULT_ADDR=http://127.0.0.1:8200" >> /root/.bashrc
 echo "alias k='kubectl'" >> ~/.bashrc
 #k8s setup
 echo "Setting up K8s..."
@@ -12,6 +11,7 @@ do
 done
 echo "source /usr/share/bash-completion/bash_completion" >> /root/.bashrc
 echo "complete -F __start_kubectl k" >> /root/.bashrc
+echo "export VAULT_ADDR=http://127.0.0.1:8200" >> /root/.bashrc
 /usr/bin/start.sh
 echo "K8s setup complete"
 
@@ -106,4 +106,4 @@ export K8S_HOST="https://kubernetes.default.svc:443"
     max_ttl=24h
 
 
-#/usr/bin/kubectl apply -f /root/vault_go_demo
+/usr/bin/kubectl apply -f /root/vault_go_demo
