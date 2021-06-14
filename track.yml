@@ -19,12 +19,12 @@ challenges:
 - slug: deploy-the-vault-helm-chart
   id: lz6iiyy29zf0
   type: challenge
-  title: Deploy The Vault Helm Chart
-  teaser: In this first challenge, we will deploy Vault via the official Helm chart.
+  title: Test the Transform (Tokenization) Secret Engine
+  teaser: In this first challenge, we will test the basic functionality of Vault tokenization.
   notes:
   - type: text
-    contents: Deploy Vault via Helm Chart
-  assignment: First install the Helm chart.
+    contents: Tokenization provides a mechanism for protecting customer PII data.
+  assignment: First, enable the Transform Secret engine.
   tabs:
   - title: Terminal
     type: terminal
@@ -41,4 +41,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "15919510052730075528"
+checksum: "15365226797656120455"
