@@ -24,6 +24,7 @@ apt install -y kubectl
 apt install -y consul 
 apt install -y vault
 
+git clone https://github.com/Andrew-Klaas/vault-go-demo-tokenization.git
 git clone https://github.com/Andrew-Klaas/instruqt-tokenization-lab.git 
 cp -r instruqt-tokenization-lab /root
 cp -r /root/instruqt-tokenization-lab/assets/helm /root/
@@ -99,13 +100,10 @@ export K8S_HOST="https://kubernetes.default.svc:443"
     default_ttl="1h" \
     max_ttl="24h"
 
-/usr/bin/vault secrets enable transform
-/usr/bin/vault write transform/role/vault_go_demo transformations=ssn
-/usr/bin/vault write transform/transformations/tokenization/ssn \
-    allowed_roles=vault_go_demo \
-    max_ttl=24h
-
-
-/usr/bin/kubectl apply -f /root/vault_go_demo
-
-sleep 20s
+#/usr/bin/vault secrets enable transform
+#/usr/bin/vault write transform/role/vault_go_demo transformations=ssn
+#/usr/bin/vault write transform/transformations/tokenization/ssn \
+#    allowed_roles=vault_go_demo \
+#    max_ttl=24h
+#/usr/bin/kubectl apply -f /root/vault_go_demo
+#sleep 20s
