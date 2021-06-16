@@ -220,6 +220,11 @@ challenges:
     Within the "Records" function we add the following
     ```
     response, err := config.Vclient.Logical().Write("transform/decode/vault_go_demo", data)
+ 		if err != nil {
+			log.Fatal(err)
+		}
+		decval := response.Data["decoded_value"].(string)
+		ssn := decval
     ```
     Now, we can launch our updated application and test tokenization
   tabs:
@@ -262,7 +267,7 @@ challenges:
 
     Delete the old application.
     ```
-    kubectl delete -f /root/
+    kubectl delete -f /root/vault_go_demo_non_tokenization/
     ```
     Deploy the updated application
     ```
@@ -270,7 +275,7 @@ challenges:
     ```
     This may take a few moments. You can check via "kubectl get pods"
     ```
-    kubectl get pods
+    kubectl get pods --watch
     ```
     Go back to the web app, add another record, and then look at the record in the Database View. Verify that the SSN is now also tokenized.
 
