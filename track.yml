@@ -56,10 +56,14 @@ challenges:
   - title: Terminal
     type: terminal
     hostname: kubernetes
-  - title: Golang App Code
+  - title: Golang App Code - init
     type: code
     hostname: kubernetes
     path: /root/vault-go-demo-tokenization/config/db.go
+  - title: Golang App Code - tokenization
+    type: code
+    hostname: kubernetes
+    path: /root/vault-go-demo-tokenization/users/handlers.go
   - title: Web App
     type: service
     hostname: kubernetes
@@ -96,10 +100,14 @@ challenges:
   - title: Terminal
     type: terminal
     hostname: kubernetes
-  - title: Golang App Code
+  - title: Golang App Code - init
     type: code
     hostname: kubernetes
     path: /root/vault-go-demo-tokenization/config/db.go
+  - title: Golang App Code - tokenization
+    type: code
+    hostname: kubernetes
+    path: /root/vault-go-demo-tokenization/users/handlers.go
   - title: Web App
     type: service
     hostname: kubernetes
@@ -156,10 +164,14 @@ challenges:
   - title: Terminal
     type: terminal
     hostname: kubernetes
-  - title: Golang App Code
+  - title: Golang App Code - init
     type: code
     hostname: kubernetes
     path: /root/vault-go-demo-tokenization/config/db.go
+  - title: Golang App Code - tokenization
+    type: code
+    hostname: kubernetes
+    path: /root/vault-go-demo-tokenization/users/handlers.go
   - title: Web App
     type: service
     hostname: kubernetes
@@ -290,10 +302,14 @@ challenges:
   - title: Terminal
     type: terminal
     hostname: kubernetes
-  - title: Golang App Code
+  - title: Golang App Code - init
     type: code
     hostname: kubernetes
     path: /root/vault-go-demo-tokenization/config/db.go
+  - title: Golang App Code - tokenization
+    type: code
+    hostname: kubernetes
+    path: /root/vault-go-demo-tokenization/users/handlers.go
   - title: Web App
     type: service
     hostname: kubernetes
@@ -306,4 +322,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "2259760775941188540"
+checksum: "15847972862922550507"
