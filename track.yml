@@ -33,6 +33,8 @@ challenges:
       Vault's Transform secrets engine functions as Vault's Encryption-as-a-Service and Tokenization solution.
       The secret engine supports tokenzation, format preserving encryption, and data masking transformations.
       To learn more, see https://www.vaultproject.io/docs/secrets/transform/tokenization.
+
+      ![Tokenization](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/blob/main/assets/images/tokenization_overview.png)
   assignment: |-
     The Transform secret engine allows Vault to tokenize data before storing to external storage.
 
@@ -273,7 +275,7 @@ challenges:
     contents: |-
       we Will now deploy our updated application to use following tokenization workflow.
 
-      [Diagram]
+      ![Tokenization Workflow](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/blob/main/assets/images/tokenization_workflow.png)
   assignment: |-
     Our application is ready for prime time.
 
