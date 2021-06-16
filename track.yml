@@ -34,7 +34,7 @@ challenges:
       The secret engine supports tokenzation, format preserving encryption, and data masking transformations.
       To learn more, see https://www.vaultproject.io/docs/secrets/transform/tokenization.
 
-      ![Tokenization](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/blob/main/assets/images/tokenization_overview.png)
+      ![Tokenization](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/raw/main/assets/images/tokenization_overview.png)
   assignment: |-
     The Transform secret engine allows Vault to tokenize data before storing to external storage.
 
@@ -324,4 +324,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "18097299680986697550"
+checksum: "9341925708093131472"
