@@ -275,7 +275,7 @@ challenges:
     contents: |-
       we Will now deploy our updated application to use following tokenization workflow.
 
-      ![Tokenization Workflow](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/blob/main/assets/images/tokenization_workflow.png)
+      ![Tokenization Workflow](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/raw/main/assets/images/tokenization_workflow.png)
   assignment: |-
     Our application is ready for prime time.
 
