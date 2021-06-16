@@ -220,11 +220,11 @@ challenges:
     Within the "Records" function we add the following
     ```
     response, err := config.Vclient.Logical().Write("transform/decode/vault_go_demo", data)
- 		if err != nil {
-			log.Fatal(err)
-		}
-		decval := response.Data["decoded_value"].(string)
-		ssn := decval
+    if err != nil {
+      log.Fatal(err)
+    }
+    decval := response.Data["decoded_value"].(string)
+    ssn := decval
     ```
     Now, we can launch our updated application and test tokenization
   tabs:
