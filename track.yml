@@ -135,7 +135,23 @@ challenges:
       allowed_roles=vault_go_demo \
       max_ttl=24h
     ```
-    Next, we will review how we modified our golang code.
+    Now, encode a test value.
+    ```
+    vault write transform/encode/vault_go_demo \
+      transformation=ssn \
+      value="123-45-6789"
+    ```
+    A tokenized value should be returned.
+    The Token is stored encrypted along side the provided plaintext within Vault or an external postgres database.
+    https://learn.hashicorp.com/tutorials/vault/tokenization#setup-external-token-storage
+
+    Decode the token
+    ```
+    vault write transform/decode/vault_go_demo \
+      transformation=ssn value=<encoded_value_from_above>
+    ```
+
+    Next, we will review how we modify our golang code to leverage Vault.
   tabs:
   - title: Terminal
     type: terminal
@@ -156,8 +172,8 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-
 - slug: review-app-integration
+  id: 2ms5atm2xpxx
   type: challenge
   title: Review our application code
   teaser: Leverage native libraries to integrate with HashiCorp Vault
@@ -171,7 +187,7 @@ challenges:
     We will be leveraging the official Go Vault client: https://github.com/hashicorp/vault/tree/master/api.
 
     First, open up the code editor tab called "Golang App Code - init".
-    
+
     In this file, we performed a few steps to login to Vault and pull dynamic database credentials. These could also be pulled from a file or environment variable.
     ```
     //Login
@@ -194,18 +210,18 @@ challenges:
 
     In the "AddRecord" function. We added the following line to tokenize the customer record's SSN before writing to Postgres.
     ```
- 		response, err := config.Vclient.Logical().Write("transform/encode/vault_go_demo", data)
-		if err != nil {
-			log.Fatal(err)
-		}
-		encval := response.Data["encoded_value"].(string)
+    response, err := config.Vclient.Logical().Write("transform/encode/vault_go_demo", data)
+    if err != nil {
+      log.Fatal(err)
+    }
+    encval := response.Data["encoded_value"].(string)
     ```
-    Last, we need to detokenize a SSN pulled from the database so we can view as plaintext.
-    Within the "Records" function we add the following 
+    Last, we need to detokenize the SSN pulled from the database so we can view as plaintext.
+    Within the "Records" function we add the following
     ```
- 		response, err := config.Vclient.Logical().Write("transform/decode/vault_go_demo", data)
+    response, err := config.Vclient.Logical().Write("transform/decode/vault_go_demo", data)
     ```
-    Now we can launch our updated application and text tokenization
+    Now, we can launch our updated application and test tokenization
   tabs:
   - title: Terminal
     type: terminal
@@ -230,4 +246,59 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "3852299836064766390"
+- slug: launch-the-updated-app
+  id: xymeoyrbezvl
+  type: challenge
+  title: Launch in the updated application
+  teaser: Deploy the updated app to securely tokenizen customer SSNs (PII data).
+  notes:
+  - type: text
+    contents: |-
+      we Will now deploy our updated application to use following tokenization workflow.
+
+      [Diagram]
+  assignment: |-
+    Our application is ready for prime time.
+
+    Delete the old application.
+    ```
+    kubectl delete -f /root/
+    ```
+    Deploy the updated application
+    ```
+    kubectl apply -f /root/vault_go_demo/
+    ```
+    This may take a few moments. You can check via "kubectl get pods"
+    ```
+    kubectl get pods
+    ```
+    Go back to the web app, add another record, and then look at the record in the Database View. Verify that the SSN is now also tokenized.
+
+    Congratulations!
+
+    You have now ensured that customer PII/PAN data is protected and access to the associated plaintext is only available to properly authenticated and authorized applications.
+
+    Further reading: Although it was out of scope for this lab, we also integrated our application with dynamic database secrets.
+    These ensure that credentials are just-in-time, short-lived, and unique.
+    https://learn.hashicorp.com/tutorials/vault/database-secrets
+  tabs:
+  - title: Terminal
+    type: terminal
+    hostname: kubernetes
+  - title: Golang App Code
+    type: code
+    hostname: kubernetes
+    path: /root/vault-go-demo-tokenization/config/db.go
+  - title: Web App
+    type: service
+    hostname: kubernetes
+    path: /
+    port: 9090
+  - title: Vault-ui
+    type: service
+    hostname: kubernetes
+    path: /
+    port: 8200
+  difficulty: basic
+  timelimit: 10000
+checksum: "2259760775941188540"
