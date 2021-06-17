@@ -217,7 +217,9 @@ challenges:
 
     We will be leveraging the official Go Vault client: https://github.com/hashicorp/vault/tree/master/api.
 
-    First, open up the code editor tab called "Golang App Code - init".
+    First, open up the code editor tab called "Golang App Code - init". 
+
+    NOTE: Make sure to click the file name on the left to open up the editor.
 
     In this file, we perform a few steps to login to Vault and pull dynamic database credentials.
     For more legacy applications, we also provide the Vault Agent which can template a token or credential to a file.
@@ -355,4 +357,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "180832939386381195"
+checksum: "392686254771449921"
