@@ -2,7 +2,7 @@ slug: vault-advanced-data-protection-with-tokenization
 id: pm1e6okdgbx3
 version: 0.0.1
 type: track
-title: 'WIP: Vault ADP with Tokenization'
+title: 'Vault ADP with Tokenization'
 teaser: Leverage Vault's Transform Secret Engine (Tokenization) for protecting customer
   PII data.
 description: |-
@@ -135,8 +135,8 @@ challenges:
   teaser: Specify a role and transformation to Tokenize user SSNs.
   notes:
   - type: text
-    contents: In this challenge, we will configure the Transform secret engine for use with
-      our application.
+    contents: In this challenge, we will configure the Transform secret engine for
+      use with our application.
   assignment: |-
     First, create a role in Vault for our application. Roles are used by Vault ACLs to restrict access to the underlying transformations. (See below for example).
     ```
@@ -228,7 +228,7 @@ challenges:
     ```
     buf, err := ioutil.ReadFile(tokenPath)
     ```
-    (Line 55) Next, we use our Vault client "Vclient" to write to the Vault login path. 
+    (Line 55) Next, we use our Vault client "Vclient" to write to the Vault login path.
     Once authenticated and authorized, Vault returns a token.
     ```
     //Login
@@ -355,4 +355,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "4958607887270841587"
+checksum: "8849594070347533273"
