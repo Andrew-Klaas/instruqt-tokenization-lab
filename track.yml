@@ -157,7 +157,7 @@ challenges:
       value="123-45-6789"
     ```
     A tokenized value should be returned.
-    The Token is stored encrypted along side the provided plaintext within Vault or an external postgres database.
+    The token is stored encrypted along side the provided plaintext within Vault or an external postgres database.
     https://learn.hashicorp.com/tutorials/vault/tokenization#setup-external-token-storage
 
     Decode the token
@@ -355,4 +355,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "16478293118662776300"
+checksum: "180832939386381195"
