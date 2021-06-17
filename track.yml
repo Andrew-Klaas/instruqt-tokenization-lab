@@ -92,7 +92,7 @@ challenges:
   notes:
   - type: text
     contents: In this challenge, we will test our current web app to determine what
-      customer PII data need to be tokenized for compliance.
+      customer PII data needs to be tokenized for compliance.
   assignment: |-
     The web app can be viewed on the "Web App" tab. You may want to click the icon in the upper right corner of the tabs area to hide the assignment window so that you can see the entire UI of the web app. Click it again to display the assignment window.
     The web app has two sections:
@@ -103,7 +103,7 @@ challenges:
 
     Click the "Add Record" button and add a new record with some fake data. Then check that the new record is not tokenized in the Database View.
 
-    In order to meet PCI compliance, our organization needs to ensure that all customer SSNs are tokenized. In this next steps we will configure Vault and show how to modify our code.
+    In order to meet PCI compliance, our organization needs to ensure that all customer SSNs are tokenized. In the following steps, we will configure Vault and show how to modify our code.
   tabs:
   - title: Terminal
     type: terminal
@@ -135,7 +135,7 @@ challenges:
   teaser: Specify a role and transformation to Tokenize user SSNs.
   notes:
   - type: text
-    contents: In this challenge, we will the Transform secret engine for use with
+    contents: In this challenge, we will configure the Transform secret engine for use with
       our application.
   assignment: |-
     First, create a role in Vault for our application. Roles are used by Vault ACLs to restrict access to the underlying transformations. (See below for example).
@@ -167,7 +167,7 @@ challenges:
     ```
     Vault ACL policies can restrict which users and applications have access to this secret engine.
     They can read about here: https://www.vaultproject.io/docs/concepts/policies.
-    As an example, we could give a user or application access to our secret engine like this:
+    As an example, we could give a user or application access to our secret engine role with this policy:
     ```
     path "transform/encode/vault_go_demo" {
       capabilities = [ "update" ]
@@ -176,7 +176,7 @@ challenges:
       capabilities = [ "update" ]
     }
     ```
-    Next, we will review how we modify our golang code to leverage Vault.
+    Next, we will review how to modify our golang code to leverage Vault.
   tabs:
   - title: Terminal
     type: terminal
@@ -213,6 +213,8 @@ challenges:
 
       To learn more about Vault native libraries see the following link: https://www.vaultproject.io/api/libraries.
   assignment: |-
+    NOTE: This challenge is optional for educational purpose only. You may skip below if you choose.
+
     We will be leveraging the official Go Vault client: https://github.com/hashicorp/vault/tree/master/api.
 
     First, open up the code editor tab called "Golang App Code - init".
@@ -226,7 +228,8 @@ challenges:
     ```
     buf, err := ioutil.ReadFile(tokenPath)
     ```
-    Next we use our Vault client "Vclient" to write to the Vault login path. Once authenticated and authorized, Vault returns a token.
+    (Line 55) Next, we use our Vault client "Vclient" to write to the Vault login path. 
+    Once authenticated and authorized, Vault returns a token.
     ```
     //Login
     secret, err1 := Vclient.Logical().Write(K8sAuthPath, config)
@@ -236,7 +239,7 @@ challenges:
     Vclient.SetToken(secret.Auth.ClientToken)
     ```
     On line 62, we next pull database credentials from Vault in order to connect to PostgreSQL. In this setup, we are using dynamic secrets.
-    Dynamic Secrets are just-in-time credentials that are unique and short-lived for every application instance or pod in this example.
+    Dynamic Secrets are just-in-time credentials that are unique and short-lived for every application instance or pod.
     Read more about dynamic secrets here: https://www.vaultproject.io/docs/secrets/databases/postgresql.
     ```
     //Pull dynamic database credentials
@@ -352,4 +355,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "5516161161863065496"
+checksum: "4958607887270841587"
