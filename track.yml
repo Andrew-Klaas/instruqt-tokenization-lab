@@ -23,7 +23,7 @@ tags:
 owner: hashicorp
 developers:
 - aklaas@hashicorp.com
-private: true
+private: false
 published: true
 challenges:
 - slug: enable-the-transform-secret-engine
@@ -39,6 +39,8 @@ challenges:
       The Transform secrets engine functions as Vault's Encryption-as-a-Service and Tokenization solution.
       The secret engine supports tokenization, format preserving encryption, and data masking transformations.
       To learn more, see https://www.vaultproject.io/docs/secrets/transform/tokenization.
+
+      This lab usually takes 3-5 minutes to spin up.
 
       ![Tokenization](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/raw/main/assets/images/tokenization_overview.png)
   assignment: |-
@@ -331,7 +333,7 @@ challenges:
     ```
     kubectl apply -f /root/vault_go_demo/
     ```
-    This may take a few moments. You can check via "kubectl get pods"
+    This may take a few minute. You can check via "kubectl get pods"
     ```
     kubectl get pods --watch
     ```
@@ -368,4 +370,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "7661038799543199040"
+checksum: "5113158910270045209"
