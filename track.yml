@@ -317,7 +317,7 @@ challenges:
   notes:
   - type: text
     contents: |-
-      we Will now deploy our updated application to use following tokenization workflow.
+      We will now deploy our updated application to use following tokenization workflow.
 
       ![Tokenization Workflow](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/raw/main/assets/images/tokenization_workflow.png)
   assignment: |-
@@ -368,4 +368,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "9511258628444227644"
+checksum: "10735166838143694191"
