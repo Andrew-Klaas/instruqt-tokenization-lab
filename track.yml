@@ -91,8 +91,8 @@ challenges:
   teaser: Determine how our application works and what data to tokenize
   notes:
   - type: text
-    contents: In this challenge, we will test our current web app to determine what customer
-      PII data need to be tokenized for compliance.
+    contents: In this challenge, we will test our current web app to determine what
+      customer PII data need to be tokenized for compliance.
   assignment: |-
     The web app can be viewed on the "Web App" tab. You may want to click the icon in the upper right corner of the tabs area to hide the assignment window so that you can see the entire UI of the web app. Click it again to display the assignment window.
     The web app has two sections:
@@ -135,8 +135,8 @@ challenges:
   teaser: Specify a role and transformation to Tokenize user SSNs.
   notes:
   - type: text
-    contents: |-
-      In this challenge, we will the Transform secret engine for use with our application.
+    contents: In this challenge, we will the Transform secret engine for use with
+      our application.
   assignment: |-
     First, create a role in Vault for our application. Roles are used by Vault ACLs to restrict access to the underlying transformations. (See below for example).
     ```
@@ -217,7 +217,7 @@ challenges:
 
     First, open up the code editor tab called "Golang App Code - init".
 
-    In this file, we perform a few steps to login to Vault and pull dynamic database credentials. 
+    In this file, we perform a few steps to login to Vault and pull dynamic database credentials.
     For more legacy applications, we also provide the Vault Agent which can template a token or credential to a file.
     Vault Agent: https://www.vaultproject.io/docs/agent.
 
@@ -305,7 +305,7 @@ challenges:
 
       ![Tokenization Workflow](https://github.com/Andrew-Klaas/instruqt-tokenization-lab/raw/main/assets/images/tokenization_workflow.png)
   assignment: |-
-    Our application is ready for prime time.
+    Our application is ready for prime time!
 
     Delete the old application.
     ```
@@ -319,7 +319,7 @@ challenges:
     ```
     kubectl get pods --watch
     ```
-    Go back to the web app, add another record, and then look at the record in the Database View. Verify that the SSN is now also tokenized.
+    Go back to the web app, add another record, and then look at the record in the Database View. Verify that the SSN is now tokenized.
 
     Congratulations!
 
@@ -327,7 +327,7 @@ challenges:
 
     Further reading: Although it was out of scope for this lab, we also integrated our application with dynamic database secrets.
     These ensure that credentials are just-in-time, short-lived, and unique.
-    https://learn.hashicorp.com/tutorials/vault/database-secrets
+    https://learn.hashicorp.com/tutorials/vault/database-secrets.
   tabs:
   - title: Terminal
     type: terminal
@@ -352,4 +352,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "7110215145691487888"
+checksum: "7853200329898155145"
