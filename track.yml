@@ -217,7 +217,7 @@ challenges:
 
     We will be leveraging the official Go Vault client: https://github.com/hashicorp/vault/tree/master/api.
 
-    First, open up the code editor tab called "Golang App Code - init". 
+    First, open up the code editor tab called "Golang App Code - init".
 
     NOTE: Make sure to click the file name on the left to open up the editor.
 
@@ -229,8 +229,18 @@ challenges:
     To learn more about Kubernetes authentication in Vault see the following: https://www.vaultproject.io/docs/auth/kubernetes.
     ```
     buf, err := ioutil.ReadFile(tokenPath)
+    if err != nil {
+      log.Fatal(err)
+    }
+    jwt := string(buf)
+    fmt.Printf("K8s Service Account JWT: %v", jwt)
+    config := map[string]interface{}{
+      "jwt":  jwt,
+      "role": K8sAuthRole,
+    }
     ```
-    (Line 55) Next, we use our Vault client "Vclient" to write to the Vault login path.
+    (Line 55) Next, we use our Vault client "Vclient" to write to the Vault login path using the above configuration (JWT and Role).
+
     Once authenticated and authorized, Vault returns a token.
     ```
     //Login
@@ -254,6 +264,7 @@ challenges:
     ```
 
     Next, open up the code editor tab called "Golang App Code - tokenization".
+    NOTE: Make sure to click the file name on the left to open up the editor.
 
     On line 127 in the "AddRecord" function, we added the following line to tokenize the customer record's SSN before writing to Postgres.
     ```
@@ -357,4 +368,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "392686254771449921"
+checksum: "9511258628444227644"
