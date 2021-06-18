@@ -36,7 +36,7 @@ challenges:
   - type: text
     contents: |-
       Secrets engines are Vault plugins that store, generate, tokenize, or encrypt data.
-      The Transform secrets engine functions as Vault's Encryption-as-a-Service and tokenization solution.
+      The Transform secrets engine functions as Vault's Encryption-as-a-Service and Tokenization solution.
       The secret engine supports tokenization, format preserving encryption, and data masking transformations.
       To learn more, see https://www.vaultproject.io/docs/secrets/transform/tokenization.
 
@@ -370,4 +370,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "9518750897457799923"
+checksum: "781776435529877738"
