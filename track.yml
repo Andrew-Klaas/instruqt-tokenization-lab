@@ -266,6 +266,7 @@ challenges:
     ```
 
     Next, open up the code editor tab called "Golang App Code - tokenization".
+
     NOTE: Make sure to click the file name on the left to open up the editor.
 
     On line 127 in the "AddRecord" function, we added the following line to tokenize the customer record's SSN before writing to Postgres.
@@ -370,4 +371,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "781776435529877738"
+checksum: "5861843084382810531"

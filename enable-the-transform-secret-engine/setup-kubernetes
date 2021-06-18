@@ -32,15 +32,16 @@ cp -r /root/instruqt-tokenization-lab/assets/config /root/
 cp -r /root/instruqt-tokenization-lab/assets/vault_go_demo /root/
 cp -r /root/instruqt-tokenization-lab/assets/vault_go_demo_non_tokenization /root/
 
-
 /usr/local/bin/helm repo add stable https://charts.helm.sh/stable
 /usr/local/bin/helm repo add hashicorp https://helm.releases.hashicorp.com
 /usr/local/bin/helm repo add bitnami https://charts.bitnami.com/bitnami
 /usr/local/bin/helm repo update
 
+
 /usr/local/bin/helm install pq \
   --set postgresqlPassword=password,postgresqlDatabase=vault_go_demo \
-    bitnami/postgresql -f /root/helm/postgresql-values.yaml
+    bitnami/postgresql 
+
 /usr/local/bin/helm install vault hashicorp/vault -f /root/helm/vault-values.yaml
 
 sleep 60s
@@ -105,10 +106,11 @@ export K8S_HOST="https://kubernetes.default.svc:443"
 
 /usr/bin/kubectl apply -f /root/vault_go_demo_non_tokenization
 
+sleep 15s
+
 #/usr/bin/vault secrets enable transform
 #/usr/bin/vault write transform/role/vault_go_demo transformations=ssn
 # /usr/bin/vault write transform/transformations/tokenization/ssn \
 #    allowed_roles=vault_go_demo \
 #    max_ttl=24h
 #/usr/bin/kubectl apply -f /root/vault_go_demo
-#sleep 20s
