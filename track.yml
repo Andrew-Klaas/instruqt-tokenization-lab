@@ -168,7 +168,7 @@ challenges:
       transformation=ssn value=<encoded_value_from_above>
     ```
     Vault ACL policies can restrict which users and applications have access to this secret engine.
-    They can read about here: https://www.vaultproject.io/docs/concepts/policies.
+    They can be read about here: https://www.vaultproject.io/docs/concepts/policies.
     As an example, we could give a user or application access to our secret engine role with this policy:
     ```
     path "transform/encode/vault_go_demo" {
