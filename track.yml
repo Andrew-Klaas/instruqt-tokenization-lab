@@ -334,10 +334,11 @@ challenges:
     ```
     kubectl apply -f /root/vault_go_demo/
     kubectl wait --timeout=180s --for=condition=Ready $(kubectl get pods --selector=app=vault-go-demo -o name)
+    sleep 5s
     ```
     This may take a minute. You can check if the new pods are ready via "kubectl get pods"
     ```
-    kubectl get pods 
+    kubectl get pods
     ```
     Go back to the web app, add another record, and then look at the record in the Database View. Verify that the SSN is now tokenized.
 
@@ -372,4 +373,4 @@ challenges:
     port: 8200
   difficulty: basic
   timelimit: 10000
-checksum: "784986808229811127"
+checksum: "8605723638007590593"
